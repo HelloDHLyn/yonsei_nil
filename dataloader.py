@@ -2,6 +2,20 @@ import numpy
 import pandas
 from pandas import *
 
+class RawDataLoader:
+    def __init__(self):
+        self.data_path = ''
+
+    def load_eval(self, name):
+        self.data_path = 'data/raw/' + name + '/'
+        eval_path = self.data_path + 'save_evaluation.csv'
+        return read_csv(eval_path)
+        
+    def load_sensor_data(self, filename):
+        file_path = self.data_path + 'Sensor/Sensor_' + filename + '.csv'
+        return read_csv(file_path)
+        
+
 class DataLoader:
     data_save = None
     data_key = None

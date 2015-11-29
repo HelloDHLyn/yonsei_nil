@@ -5,14 +5,14 @@ from pandas import *
 import matplotlib
 import matplotlib.pyplot as plt
 
-data = read_csv('data/save.csv')
+from preprocess import DataLoader
+
+loader = DataLoader()
+data = loader.get_save_data()
 
 # Set columns
-wpm_per_age = data.groupby(' Age').mean()[' WPM']
+wpm_per_age = data.groupby('age').mean()['wpm']
 print wpm_per_age
-
-wpm_per_posture = data.groupby(' Input posture').mean()[' WPM']
-print wpm_per_posture
 
 matplotlib.style.use('ggplot')
 
